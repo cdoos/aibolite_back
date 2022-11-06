@@ -1,9 +1,15 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.contrib.auth.base_user import AbstractBaseUser
 from phonenumber_field.modelfields import PhoneNumberField
+from .managers import UserManager
 
 
-class User(models.Model):
+class User(AbstractBaseUser):
+    username = models.CharField(
+        verbose_name=_("Username"),
+        max_length=20
+    )
     date_of_birth = models.DateField(
         verbose_name=_("Date of Birth"),
     )
@@ -28,10 +34,15 @@ class User(models.Model):
         null=True,
     )
     contact_number = PhoneNumberField(
-        max_length=12,
-        unique=True,
+        max_length=12
     )
     address = models.CharField(
         verbose_name=_('Address'),
         max_length=100,
+        blank=True,
     )
+
+    objects = UserManager()
+
+    EMAIL_FIELD = 'username'
+    USERNAME_FIELD = 'username'

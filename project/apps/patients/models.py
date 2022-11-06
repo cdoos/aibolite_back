@@ -31,7 +31,8 @@ class Patient(models.Model):
     )
     marital_status = models.CharField(
         verbose_name=_('Marital status'),
-        max_length=100
+        max_length=100,
+        blank=True,
     )
     registration_date = models.DateTimeField(
         verbose_name=_('Registration date'),
