@@ -27,11 +27,7 @@ class Patient(models.Model):
     email = models.EmailField(
         verbose_name=_('email'),
         blank=True,
-        null=True
-    )
-    address = models.CharField(
-        verbose_name=_('Address'),
-        max_length=100
+        null=True,
     )
     marital_status = models.CharField(
         verbose_name=_('Marital status'),
@@ -39,7 +35,6 @@ class Patient(models.Model):
     )
     registration_date = models.DateTimeField(
         verbose_name=_('Registration date'),
-        null=True,
-        blank=True
+        auto_now=True,
     )
 
