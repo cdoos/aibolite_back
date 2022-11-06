@@ -71,6 +71,7 @@ class Doctor(models.Model):
     )
     homepage_url = models.CharField(
         verbose_name="Homepage URL",
+        max_length=256,
         null=True,
         blank=True,
     )
